@@ -138,3 +138,4 @@ while True:
         print(f"{MAGENTA}Thank you for playing, {user}! You finished with {points} points.{RESET}")
         print(f"{MAGENTA}--------------------------------{RESET}\n")
         break
+        
