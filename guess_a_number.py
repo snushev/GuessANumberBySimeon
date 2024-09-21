@@ -1,4 +1,5 @@
 from random import randint
+import os
 
 # Define color codes
 RED = '\033[31m'
@@ -8,6 +9,32 @@ BLUE = '\033[34m'
 MAGENTA = '\033[35m'
 CYAN = '\033[36m'
 RESET = '\033[0m'
+
+LEADERBOARD_FILE = 'Leaderboard.txt'
+
+
+def load_leaderboard():
+    if os.path.exists(LEADERBOARD_FILE):
+        with open(LEADERBOARD_FILE, 'r') as file:
+            scores = [line.strip().split(':') for line in file.readlines()]
+            return [(name, int(score)) for name, score in scores]
+    return []
+
+
+# Function to save the leaderboard
+def save_leaderboard(leaderboard):
+    with open(LEADERBOARD_FILE, 'w') as file:
+        for name, score in leaderboard:
+            file.write(f"{name}:{score}\n")
+
+
+# Function to display the leaderboard
+def display_leaderboard(leaderboard):
+    print(f"\n{MAGENTA}----- Leaderboard -----{RESET}")
+    for i, (name, score) in enumerate(sorted(leaderboard, key=lambda x: x[1], reverse=True)):
+        print(f"{i + 1}. {name} - {score} points")
+    print(f"{MAGENTA}-----------------------{RESET}\n")
+
 
 welcome_art = f"""{BLUE}
 ██████╗ ██╗   ██╗███████╗███████╗███████╗     █████╗     ███╗   ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗██████╗
@@ -21,6 +48,9 @@ print(welcome_art)
 # Welcome message
 print(f'{CYAN}Welcome To The Guess A Number Game')
 user = input(f"{YELLOW}Enter your name: {RESET}")
+
+leaderboard = load_leaderboard()
+
 print(f"\n{MAGENTA}--------------------------------{RESET}\n")
 print(f"{GREEN}1. Easy Mode (1-10) - 1 point.{RESET}")
 print(f"{GREEN}2. Medium Mode (1-100) - 2 points.{RESET}")
@@ -136,6 +166,11 @@ while True:
     else:
         print(f"\n{MAGENTA}--------------------------------{RESET}\n")
         print(f"{MAGENTA}Thank you for playing, {user}! You finished with {points} points.{RESET}")
-        print(f"{MAGENTA}--------------------------------{RESET}\n")
+
+        # Update leaderboard if the score is high enough
+        leaderboard.append((user, points))
+        save_leaderboard(leaderboard)
+
+        # Display the leaderboard
+        display_leaderboard(leaderboard)
         break
-        
