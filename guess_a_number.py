@@ -75,6 +75,7 @@ while True:
     print(f"\n{MAGENTA}--------------------------------{RESET}\n")
     if mode == 1:
         computer_number = randint(1, 10)
+        print(f"{GREEN}Guess the number in range of 1 to 10.{RESET}")
         number = int(input(f"{YELLOW}Enter your number: {RESET}"))
         while computer_number != number:
             if number > computer_number:
@@ -88,6 +89,7 @@ while True:
 
     elif mode == 2:
         computer_number = randint(1, 100)
+        print(f"{GREEN}Guess the number in range of 1 to 100.{RESET}")
         number = int(input(f"{YELLOW}Enter your number: {RESET}"))
         while computer_number != number:
             if number > computer_number:
@@ -101,6 +103,7 @@ while True:
 
     elif mode == 3:
         computer_number = randint(1, 1000)
+        print(f"{GREEN}Guess the number in range of 1 to 1000.{RESET}")
         number = int(input(f"{YELLOW}Enter your number: {RESET}"))
         while computer_number != number:
             if number > computer_number:
@@ -114,6 +117,7 @@ while True:
 
     elif mode == 4:
         computer_number = randint(1, 50)
+        print(f"{GREEN}Guess the number in range of 1 to 50 with 5 tries.{RESET}")
         number = int(input(f"{YELLOW}Enter your number: {RESET}"))
         while computer_number != number:
             if number > computer_number:
@@ -132,6 +136,7 @@ while True:
             print(f"\n{GREEN}Congratulations! You won the game.{RESET}")
             points += 20
     elif mode == 5:
+        print(f"{GREEN}Guess the number in a custom range by your choice.{RESET}")
         custom_range_min = int(input(f"{CYAN}Enter the minimum number for the range: {RESET}"))
         custom_range_max = int(input(f"{CYAN}Enter the maximum number for the range: {RESET}"))
         custom_lives = int(input(f"{CYAN}Enter the number of lives: {RESET}"))
