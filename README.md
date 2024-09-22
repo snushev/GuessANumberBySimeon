@@ -1,7 +1,7 @@
 # GuessANumberBySimeon
 Python project for Guess a number game
 
-![logo](https://www.teachwithict.com/uploads/5/5/8/2/5582303/published/guess-the-number.png?1611311296)
+![img_1.png](img_1.png)
 
 ## Overview
 The "Guess a Number" game is a simple console-based game where the player attempts to guess a randomly generated number within a specified range. The game offers multiple difficulty levels and allows players to accumulate points based on their performance. Additionally, the game tracks and stores the highest scores across sessions in a persistent leaderboard.
